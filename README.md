@@ -1,66 +1,81 @@
-# Termometro ambiente com arduino
-Um termômetro que mede temperatura ambiente usando Arduino Uno;
+# 🌡️Termometro Ambiente com Arduino🤖
 
-__Como Funciona:__
-O sensor TMP detecta a temperatura ambiente e converte em tensão proporcional,
-O Arduino lê a tensão na entrada analógica A0 e a converte em temperatura (em graus Celsius),
-A temperatura é exibida no display LCD.
+Um projeto simples e funcional para medir a temperatura ambiente usando o Arduino Uno e um sensor TMP36 (ou equivalente).
+A leitura é exibida em tempo real em um display LCD 16x2.
 
-__Os materiais são:__
+## Como Funciona⚙️
 
-.Tela LCD
-
-.Resistor de 220Ω
-
-.Sensor de temperatura (TMP)
-
-.Potênciometro
-
-.Arduino Uno
+O sensor TMP detecta a temperatura do ambiente e converte essa variação térmica em tensão analógica proporcional.
+O Arduino lê essa tensão na porta analógica A0 e realiza a conversão para graus Celsius (°C).
+Por fim, o valor é mostrado no display LCD, que atualiza a leitura a cada segundo.
 
 
-![arduino p1](https://github.com/user-attachments/assets/11b58b02-15c0-4b9b-8999-c27e6e64cdd9)
+## Materiais🧰
 
 
+<img width="50%" alt="Imagem do WhatsApp de 2025-10-03 à(s) 09 32 58_2a1dab3c" src="https://github.com/user-attachments/assets/38bc4a1e-a806-4210-a9d3-f20986d93829" />
 
-# Esquema de Conexão:
+
+* Tela LCD 16x2
+
+* Resistor de 220Ω
+
+* Sensor de temperatura (TMP)
+
+* Potênciometro
+
+* Arduino Uno
+
+## Montagem🛠️
 
 
-•**Sensor TMP:**
+<img width="50%" alt="Imagem do WhatsApp de 2025-10-03 à(s) 09 32 58_2a1dab3c" src="https://github.com/user-attachments/assets/11b58b02-15c0-4b9b-8999-c27e6e64cdd9" />
 
-Pino 1 (VCC): Conecte ao 5V do Arduino.
 
-Pino 2 (VOUT): Conecte à entrada analógica A0 do Arduino.
+Monte o Arduino em uma protoboard e conecte suas linhas de energia, levando 5V e GND para os trilhos laterais. Posicione o display LCD 16x2 e o potenciômetro próximos, para facilitar as ligações do contraste. Coloque o sensor de temperatura na parte superior da protoboard, com os fios bem organizados.
 
-Pino 3 (GND): Conecte ao GND do Arduino.
-______________________________________________________________________________________________________________________________________________________________________
-•__Display LCD 16x2:__
+Conecte o potenciômetro ao LCD para controlar o contraste e ligue a alimentação e o terra do display nos trilhos correspondentes. O sensor deve ser ligado à mesma linha de alimentação do Arduino, compartilhando o GND com os demais componentes.
 
-Pinos de Controle:
+Depois de tudo conectado, revise as ligações, garantindo que não haja fios soltos ou curtos. Em seguida, conecte o cabo USB ao Arduino para energizar o circuito e ajuste o potenciômetro até que o texto apareça corretamente no display.
 
-RS: Conecte ao pino digital 12 do Arduino.
 
-E: Conecte ao pino digital 11 do Arduino.
+## Esquema de Conexão⚡
 
-Pinos de Dados:
+**Sensor TMP**
 
-D4, D5, D6, D7: Conecte aos pinos digitais 5, 4, 3, 2 do Arduino, respectivamente.
+| Componente         | Pino do Arduino |
+| ------------------ | --------------- |
+| VCC -> Sensor TMP  | 5V              |
+| VOUT -> Sensor TMP | A0              |
+| GND -> Sensor TMP  | GND             |
 
-Pino de Contraste:
 
-Conecte o meio do potenciômetro ao pino V0 do LCD, um terminal ao GND e o outro ao 5V.
-__________________________________________________________________________________________________________________________________________________________________________
-•__Alimentação:__
+_________________________________________________________________________________________________________________________________________________________________________________
 
-VSS: Conecte ao GND.
+**LCD, nos outros componentes**
 
-VDD: Conecte ao 5V.
+| Componente                  | Pino do Arduino       |
+| --------------------------- | --------------------- |
+| RS -> LCD                   | D12                   |
+| E -> LCD                    | D11                   |
+| D4 -> LCD                   | D5                    |
+| D5 -> LCD                   | D4                    |
+| D6 -> LCD                   | D3                    |
+| D7 -> LCD                   | D2                    |
+| V0 -> LCD (Contraste)       | Meio do potenciômetro |
+| Potenciômetro -> Terminal 1 | GND                   |
+| Potenciômetro -> Terminal 2 | 5V                    |
 
-A (LED+): Conecte ao 5V (opcional, para retroiluminação).
+**Alimentação do LCD**
 
-K (LED-): Conecte ao GND (opcional).
+| Componente      | Pino do Arduino                    |
+| --------------- | ---------------------------------- |
+| VSS -> LCD      | GND                                |
+| VDD -> LCD      | 5V                                 |
+| A (LED+) -> LCD | 5V *(opcional – retroiluminação)*  |
+| K (LED-) -> LCD | GND *(opcional – retroiluminação)* |
 
-# Código
+## Código💻
 
 ```
 #include <LiquidCrystal.h>
@@ -90,6 +105,6 @@ void loop() {
   delay(1000);
 }
 ```
-# Projeto no simulador 
+## Projeto no TinkerCAD❗
 
 https://www.tinkercad.com/things/8bG02cF6Bpi-termometro-ambiente-
